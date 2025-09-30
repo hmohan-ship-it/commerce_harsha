@@ -41,31 +41,27 @@ view: users {
     type: string
     sql: ${TABLE}.last_name ;;
   }
-  dimension: full_name {
-    type: string
-    sql: ${first_name} || ' ' || ${last_name} ;;
-  }
-  dimension: full_name2 {
-    type: string
-    sql: ${first_name}' '${last_name} ;;
-  }
-  dimension: full_name_length {
-    type: number
-    sql: LENGTH(${full_name}) ;;
-  }
-  dimension: age_tier {
-    type: tier
-    label: "Age Decade Tier"
-    sql: ${age} ;;
-    tiers: [10, 20, 30, 40, 50, 60, 70, 80, 90]
-    style: integer
-  }
-  measure: average_user_age {
-    type: average
-    label: "Average User Age"
-    sql: ${age} ;;
-    value_format_name: decimal_2
-  }
+dimension: full_name {
+  type: string
+  sql: CONCAT(${first_name}, ' ', ${last_name}) ;;
+}
+dimension: full_name_length {
+  type: number
+  sql: LENGTH(${full_name}) ;;
+}
+dimension: age_tier {
+  type: tier
+  label: "Age Decade Tier"
+  sql: ${age} ;;
+  tiers: [10, 20, 30, 40, 50, 60, 70, 80, 90]
+  style: integer
+}
+measure: average_user_age {
+  type: average
+  label: "Average User Age"
+  sql: ${age} ;;
+  value_format_name: decimal_2
+}
   dimension: state {
     type: string
     sql: ${TABLE}.state ;;
