@@ -35,9 +35,13 @@ view: order_items {
     sql: ${TABLE}.sale_price ;;
   }
 
-  dimension: my_string_dimension {
-    type: string
-    sql: '8'
+  dimension: Liquid_Sub {
+    type: number # Changed to 'number' to display the result of 4
+    sql:
+    {% assign my_value = '8' | times: 1 %} # Directly assign '8' and convert to number (8)
+
+          SELECT {{ my_value | minus: 4 }} # Perform subtraction (8 - 4 = 4) and output it in the SQL
+          ;;
   }
 
   measure: total_revenue  {
