@@ -37,7 +37,7 @@ view: order_items {
 
   dimension: my_string_dimension {
     type: string
-    sql: '8' ;; # Assigns the string value '8'
+    sql: '8'
   }
 
   measure: total_revenue  {
