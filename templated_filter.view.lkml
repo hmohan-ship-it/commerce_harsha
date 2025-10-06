@@ -1,15 +1,20 @@
 
 view: templated_filter {
   derived_table: {
-    sql: Select 
+    sql: Select
       id,
       first_name,
       last_name,
       age,
       created_at,
       state
-      from 
-      users ;;
+      from
+      users
+      WHERE {% condition users_location %} users.state {% endcondition %} ;;
+  }
+
+  filter: users_location {
+    type: string
   }
 
   measure: count {
@@ -50,11 +55,11 @@ view: templated_filter {
   set: detail {
     fields: [
         id,
-	first_name,
-	last_name,
-	age,
-	created_at_time,
-	state
+  first_name,
+  last_name,
+  age,
+  created_at_time,
+  state
     ]
   }
 }
