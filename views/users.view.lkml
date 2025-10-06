@@ -65,15 +65,30 @@ measure: average_user_age {
   dimension: state {
     type: string
     sql: ${TABLE}.state ;;
+    link: {
+      label: "Go to Dashboard 1"
+      url: "https://gcpl256.cloud.looker.com/looks/9?toggle=dat"
+    }
   }
   dimension: zip {
     type: zipcode
     sql: ${TABLE}.zip ;;
   }
 
+
   measure: count {
     type: count
     drill_fields: [detail*]
+  }
+
+  measure: count_link {
+    type: count
+    html: {{link}} ;;
+  }
+  measure: count_linked_value {
+    type: count
+    html: This is the value: {{linked_value}} ;;
+    value_format_name: usd
   }
 
   # ----- Sets of fields for drilling ------
@@ -89,6 +104,32 @@ measure: average_user_age {
   sindhu.count,
   user_data.count
   ]
+  }
+
+  measure: count_example {
+    type: count
+    value_format_name: usd
+    html: <ul>
+      <li> value: {{ value }} </li>
+      <li> rendered_value: {{ rendered_value }} </li>
+      <li> linked_value: {{ linked_value }} </li>
+      <li> link: {{ link }} </li>
+      <li> model: {{ _model._name }} </li>
+      <li> view: {{ _view._name }} </li>
+      <li> explore: {{ _explore._name }} </li>
+      <li> field: {{ _field._name }} </li>
+      <li> dialect: {{ _dialect._name }} </li>
+      <li> connection: {{ _connection._database }} </li>
+      <li> connection: {{ count._sql }} </li>
+      <li> query timezone: {{ _query._query_timezone }} </li>
+      <li> filters: {{ _filters['users.id'] }} </li>
+      <li> Is 'Users' view used: {{ users._in_query }} </li>
+      <li> Is 'Users ID' field In Query: {{ users.id._in_query }} </li>
+      <li> Is 'Users Count' field In Query: {{ users.count_example._in_query }} </li>
+      <li> Is 'Users Country' field In Query: {{ users.country._in_query }} </li>
+      <li> Is 'Users Country' field selected: {{ users.country._is_selected }} </li>
+      <li> Is 'Users Country' field filtered: {{ users.country._is_filtered }} </li>
+    </ul> ;;
   }
 
 }
