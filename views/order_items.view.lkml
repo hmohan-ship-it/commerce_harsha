@@ -34,6 +34,12 @@ view: order_items {
     type: number
     sql: ${TABLE}.sale_price ;;
   }
+
+  dimension: my_string_dimension {
+    type: string
+    sql: '8' ;; # Assigns the string value '8'
+  }
+
   measure: total_revenue  {
     type: sum
     value_format: "$0.00"
