@@ -70,6 +70,7 @@ measure: average_user_age {
     type: zipcode
     sql: ${TABLE}.zip ;;
   }
+
   measure: count {
     type: count
     drill_fields: [detail*]
