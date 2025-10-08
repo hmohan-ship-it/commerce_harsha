@@ -5,6 +5,7 @@ view: Order_count {
   derived_table: {
     indexes: ["id","created_date"]
     persist_for: "8 hours"
+    datagroup_trigger: commerce_harsha
     explore_source: orders {
       column: count {}
 
