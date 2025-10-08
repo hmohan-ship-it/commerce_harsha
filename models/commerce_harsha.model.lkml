@@ -144,9 +144,8 @@ explore: orders {
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
   }
+
 }
-
-
 
 
 explore: order_items {
@@ -289,6 +288,7 @@ explore: thor {}
 
 explore: users {}
 
+
 explore: user_data {
   join: users {
     type: left_outer
@@ -296,6 +296,8 @@ explore: user_data {
     relationship: many_to_one
   }
 }
+
+
 
 explore: viet {}
 
