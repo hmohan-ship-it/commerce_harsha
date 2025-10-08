@@ -1,9 +1,9 @@
 # If necessary, uncomment the line below to include explore_source.
 # include: "commerce_harsha.model.lkml"
 
-view: order_c {
+view: Order_count {
   derived_table: {
-    explore_source: orders_count {
+    explore_source: orders {
       column: count {}
     }
   }
@@ -12,7 +12,6 @@ view: order_c {
     type: number
   }
 }
-
 
 view: orders {
   sql_table_name: demo_db.orders ;;
