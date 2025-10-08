@@ -3,13 +3,17 @@
 
 view: Order_count {
   derived_table: {
+    indexes: ["id","created_date"]
+    persist_for: "8 hours"
     explore_source: orders {
       column: count {}
+
     }
   }
   dimension: count {
     description: ""
     type: number
+
   }
 }
 
