@@ -1,24 +1,3 @@
-# If necessary, uncomment the line below to include explore_source.
-# include: "commerce_harsha.model.lkml"
-
-view: Order_count_pdt {
-  derived_table: {
-
-    explore_source: orders {
-      column: id {}
-      column: created_date {}
-      column: count {}
-    }
-    indexes: ["id","created_date"]
-    persist_for: "8 hours"
-    datagroup_trigger: commerce_harsha_default_datagroup
-  }
-  dimension: count {
-    description: ""
-    type: number
-
-  }
-}
 
 view: orders {
   sql_table_name: demo_db.orders ;;
